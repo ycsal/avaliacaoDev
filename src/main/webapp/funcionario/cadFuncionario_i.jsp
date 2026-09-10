@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="UTF8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"  pageEncoding="UTF8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 	<body class="bg-secondary">
 
 		<div class="container">
-			<s:form action="/novoFuncionarios.action">
+			<s:form action="/novoFuncionarios.action" acceptcharset="UTF-8">
 
 				<div class="card mt-5">
 					<div class="card-header">

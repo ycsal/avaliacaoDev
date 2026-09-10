@@ -25,8 +25,11 @@ public class FuncionarioBusiness {
 		try {
 			if(funcionarioVo.getNome().isEmpty())
 				throw new IllegalArgumentException("Nome nao pode ser em branco");
-			
-			dao.insertFuncionario(funcionarioVo);
+			else if (funcionarioVo.getRowid() == null || funcionarioVo.getRowid().trim().isEmpty()) {
+			    dao.insertFuncionario(funcionarioVo);
+			} else {
+			    dao.updateFuncionario(funcionarioVo);
+			}
 		} catch (Exception e) {
 			throw new BusinessException("Nao foi possivel realizar a inclusao do registro");
 		}
