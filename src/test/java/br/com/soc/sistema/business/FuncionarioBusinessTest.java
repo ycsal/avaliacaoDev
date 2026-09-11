@@ -1,6 +1,7 @@
 package br.com.soc.sistema.business;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -23,5 +24,19 @@ public class FuncionarioBusinessTest {
                 funcionarioBusiness.buscarFuncionarioPor("1");
 
         assertEquals("Joao Alterado", funcionarioAlterado.getNome());
+    }
+    
+    @Test
+    public void deveExcluirFuncionarioExistente() {
+        FuncionarioBusiness business = new FuncionarioBusiness();
+        FuncionarioVo funcionario = business.buscarFuncionarioPor("1");
+        assertNotNull(funcionario);
+
+        business.excluirFuncionario(funcionario.getRowid());
+
+        FuncionarioVo funcionarioExcluido =
+                business.buscarFuncionarioPor("1");
+
+        assertNull(funcionarioExcluido);
     }
 }

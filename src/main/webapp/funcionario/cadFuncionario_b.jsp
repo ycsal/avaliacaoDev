@@ -58,7 +58,7 @@
 										<s:text name="label.editar"/>
 									</a>
 
-									<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarExclusao">
+									<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarExclusao" data-rowid="${rowid}">
 										<s:text name="label.excluir"/>
 									</a>
 								</td>
@@ -105,7 +105,7 @@
 					<s:text name="label.nao"/>
 				</a>
 	        	
-				<s:a id="excluir" class="btn btn-primary" style="width: 75px;">
+				<s:a id="excluir"  href="#" class="btn btn-primary" style="width: 75px;">
 					<s:text name="label.sim"/>
 				</s:a>						
 		      </div>
@@ -114,5 +114,21 @@
 		</div>
 		
 		<script src="webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+		<script>
+		    var botoesExcluir = document.querySelectorAll('[data-rowid]');
+		    var botaoConfirmar = document.getElementById('excluir');
+		
+		    botoesExcluir.forEach(function(botao) {
+		
+		        botao.onclick = function() {
+		
+		            var rowid = botao.dataset.rowid;
+		
+		            botaoConfirmar.href =
+		                'excluirFuncionarios.action?funcionarioVo.rowid=' + rowid;
+		        };
+		
+		    });
+		</script>
 	</body>
 </html>
