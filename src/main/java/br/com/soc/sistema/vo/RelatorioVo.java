@@ -1,0 +1,59 @@
+package br.com.soc.sistema.vo;
+
+public class RelatorioVo {
+
+    private String codigoFuncionario;
+    private String nomeFuncionario;
+    private String codigoAgenda;
+    private String nomeAgenda;
+    private String data;
+    private String horario;
+
+    public String getCodigoFuncionario() {
+        return codigoFuncionario;
+    }
+
+    public void setCodigoFuncionario(String codigoFuncionario) {
+        this.codigoFuncionario = codigoFuncionario;
+    }
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    public String getCodigoAgenda() {
+        return codigoAgenda;
+    }
+
+    public void setCodigoAgenda(String codigoAgenda) {
+        this.codigoAgenda = codigoAgenda;
+    }
+
+    public String getNomeAgenda() {
+        return nomeAgenda;
+    }
+
+    public void setNomeAgenda(String nomeAgenda) {
+        this.nomeAgenda = nomeAgenda;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+}

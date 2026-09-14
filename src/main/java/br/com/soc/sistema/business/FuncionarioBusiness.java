@@ -42,7 +42,12 @@ public class FuncionarioBusiness {
 	}
 	
 	public void excluirFuncionario(String rowid) {
-		dao.deleteFuncionario(rowid);
+	    CompromissosBusiness compromissoBusiness =
+	            new CompromissosBusiness();
+
+	    compromissoBusiness.excluirCompromissosPorFuncionario(rowid);
+
+	    dao.deleteFuncionario(rowid);
 	}
 	
 	public List<FuncionarioVo> filtrarFuncionarios(FuncionarioFilter filter){

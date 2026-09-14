@@ -13,15 +13,30 @@ import br.com.soc.sistema.vo.FuncionarioVo;
 public class FuncionarioDao extends Dao {
 
 	public void insertFuncionario(FuncionarioVo funcionarioVo) {
-		StringBuilder query = new StringBuilder("INSERT INTO funcionario (nm_funcionario) values (?)");
-		try (Connection con = getConexao(); PreparedStatement ps = con.prepareStatement(query.toString())) 
-		{
-			int i = 1;
-			ps.setString(i++, funcionarioVo.getNome());
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	    StringBuilder query = new StringBuilder(
+	        "INSERT INTO funcionario (nm_funcionario) VALUES (?)"
+	    );
+
+	    try (
+	        Connection con = getConexao();
+	        PreparedStatement ps = con.prepareStatement(
+	            query.toString(),
+	            java.sql.Statement.RETURN_GENERATED_KEYS
+	        )
+	    ) {
+	        ps.setString(1, funcionarioVo.getNome());
+
+	        ps.executeUpdate();
+
+	        try (ResultSet rs = ps.getGeneratedKeys()) {
+	            if (rs.next()) {
+	                funcionarioVo.setRowid(rs.getString(1));
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	public void updateFuncionario(FuncionarioVo funcionarioVo) {
